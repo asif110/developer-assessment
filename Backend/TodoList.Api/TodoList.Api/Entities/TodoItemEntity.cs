@@ -2,7 +2,7 @@ using System;
 
 namespace TodoList.Api
 {
-    public class TodoItem
+    public class TodoItemEntity
     {
         public Guid Id { get; set; }
 

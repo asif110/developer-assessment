@@ -6,6 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
+using TodoList.Api.Interface;
+using TodoList.Api.DataAccess;
+using TodoList.Api.Logic;
+
+
 namespace TodoList.Api
 {
     public class Startup
@@ -37,6 +42,8 @@ namespace TodoList.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoList.Api", Version = "v1" });
             });
 
+            services.AddScoped<ITodoDataAccess, TodoDataAccess>();
+            services.AddScoped<ITodoLogic, TodoLogic>();
             services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoItemsDB"));
         }
 
